@@ -576,10 +576,6 @@ textarea {
   animation: fadeIn 0.3s ease;
 }
 
-.policy-content[hidden] {
-  display: none;
-}
-
 .policy-content h3 {
   margin: 0;
   font-size: clamp(18px, 3.2vw, 22px);
