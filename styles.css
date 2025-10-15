@@ -543,6 +543,8 @@ textarea {
 
 .form button {
   grid-column: 1 / -1;
+  width: min(220px, 100%);
+  justify-self: center;
 }
 
 .form .btn {
