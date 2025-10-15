@@ -82,6 +82,19 @@ a {
   mix-blend-mode: screen;
   animation: heroFlow 22s ease-in-out infinite alternate;
   z-index: -1;
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 10% -35% 10%;
+  height: 60%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 227, 170, 0.4), rgba(5, 5, 15, 0));
+  filter: blur(45px);
+  opacity: 0.7;
+  z-index: -1;
+  animation: float 10s ease-in-out infinite;
 }
 
 .hero::after {
