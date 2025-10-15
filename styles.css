@@ -554,83 +554,67 @@ textarea {
   color: var(--accent-2);
   text-decoration: underline;
   font-weight: 500;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 16px;
-  background: rgba(5, 5, 15, 0.65);
-  backdrop-filter: blur(6px);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal-dialog {
-  position: relative;
-  max-width: min(720px, 90vw);
-  background: rgba(12, 14, 34, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: clamp(24px, 4vw, 40px);
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55);
-  color: var(--text);
-  overflow: hidden;
-}
-
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(123, 91, 255, 0.15);
-  border: 1px solid rgba(123, 91, 255, 0.35);
-  border-radius: 999px;
-  color: var(--text);
-  font-size: 14px;
-  padding: 6px 12px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease;
 }
 
-.modal-close:hover {
-  background: rgba(123, 91, 255, 0.3);
-  transform: translateY(-2px);
+.form-note a[aria-expanded='true'] {
+  color: #9fffe2;
 }
 
-.modal h2 {
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: clamp(22px, 4vw, 28px);
-}
-
-.modal section + section,
-.modal p + p,
-.modal ol,
-.modal ul {
+.policy-content {
+  grid-column: 1 / -1;
   margin-top: 16px;
+  padding: clamp(20px, 4vw, 28px);
+  border-radius: 18px;
+  background: rgba(12, 14, 34, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  display: grid;
+  gap: 12px;
+  color: var(--text);
+  animation: fadeIn 0.3s ease;
 }
 
-.modal ol {
+.policy-content[hidden] {
+  display: none;
+}
+
+.policy-content h3 {
+  margin: 0;
+  font-size: clamp(18px, 3.2vw, 22px);
+}
+
+.policy-content h4 {
+  margin: 12px 0 4px;
+  font-size: clamp(16px, 3vw, 18px);
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.policy-content h4:first-of-type {
+  margin-top: 0;
+}
+
+.policy-content p {
+  margin: 0;
+  color: rgba(245, 246, 255, 0.78);
+  font-size: 14px;
+}
+
+.policy-content ul {
+  margin: 0 0 8px 0;
   padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  color: rgba(245, 246, 255, 0.78);
+  font-size: 14px;
 }
 
-.modal a {
+.policy-content a {
   color: var(--accent-2);
   text-decoration: underline;
-}
-
-body.modal-open {
-  overflow: hidden;
+  font-weight: 500;
 }
 
 .footer {
