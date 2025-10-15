@@ -391,7 +391,7 @@ main .section:nth-of-type(5) {
   inset: 0;
   background: radial-gradient(140% 140% at 0% 0%, rgba(123, 91, 255, 0.28) 0%, rgba(123, 91, 255, 0.12) 45%, transparent 75%);
   opacity: 0;
-  transform: translate3d(-40px, 40px, 0);
+  transform: translate3d(-40px, 0, 0);
   transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none;
 }
