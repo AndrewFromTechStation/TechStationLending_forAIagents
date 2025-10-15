@@ -564,8 +564,11 @@ textarea {
 
 .policy-content {
   grid-column: 1 / -1;
+  position: relative;
   margin-top: 16px;
   padding: clamp(20px, 4vw, 28px);
+  padding-top: clamp(28px, 5vw, 36px);
+  padding-right: clamp(24px, 5vw, 40px);
   border-radius: 18px;
   background: rgba(12, 14, 34, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -573,7 +576,47 @@ textarea {
   display: grid;
   gap: 12px;
   color: var(--text);
-  animation: fadeIn 0.3s ease;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  transition: height 0.45s ease, opacity 0.35s ease;
+  will-change: height, opacity;
+}
+
+.policy-content.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.policy-close {
+  position: absolute;
+  top: clamp(10px, 2.5vw, 16px);
+  right: clamp(10px, 2.5vw, 16px);
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.policy-close:hover {
+  background: rgba(0, 227, 170, 0.15);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.policy-close:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
 }
 
 .policy-content h3 {

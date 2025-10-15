@@ -186,6 +186,14 @@
             tabindex="-1"
             aria-label="Политика обработки персональных данных"
           >
+            <button
+              type="button"
+              class="policy-close"
+              data-policy-close
+              aria-label="Закрыть политику обработки персональных данных"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
             <h3>Политика конфиденциальности ООО «Техностанция»</h3>
             <h4>1. Общие положения</h4>
             <p>
@@ -290,26 +298,80 @@
     const policyTrigger = document.querySelector('[data-policy-toggle]');
     const policyTemplate = document.getElementById('privacy-policy-template');
     let activePolicySection = null;
+    let closingPolicySection = null;
 
     const closePolicy = (shouldFocusTrigger = false) => {
-      if (!policyTrigger) return;
+      if (!policyTrigger || !activePolicySection) return;
+
+      const section = activePolicySection;
+      if (section.dataset.state === 'closing') return;
+
       policyTrigger.setAttribute('aria-expanded', 'false');
       policyTrigger.removeAttribute('aria-controls');
-      activePolicySection?.remove();
-      activePolicySection = null;
 
-      if (shouldFocusTrigger) {
-        policyTrigger.focus();
-      }
+      activePolicySection = null;
+      section.dataset.state = 'closing';
+      section.style.height = `${section.scrollHeight}px`;
+
+      // Force reflow before starting the collapse animation
+      void section.offsetHeight;
+
+      requestAnimationFrame(() => {
+        section.classList.remove('is-visible');
+        section.style.height = '0px';
+      });
+
+      const handleTransitionEnd = (event) => {
+        if (event.target !== section || event.propertyName !== 'height') return;
+        section.removeEventListener('transitionend', handleTransitionEnd);
+        delete section.__closeHandler;
+        section.remove();
+        closingPolicySection = null;
+
+        if (shouldFocusTrigger) {
+          policyTrigger.focus();
+        }
+      };
+
+      section.__closeHandler = handleTransitionEnd;
+      closingPolicySection = section;
+      section.addEventListener('transitionend', handleTransitionEnd);
     };
 
     const openPolicy = () => {
       if (!policyTemplate || !policyTrigger) return;
 
+      if (activePolicySection) {
+        if (activePolicySection.dataset.state !== 'closing') {
+          return;
+        }
+      }
+
+      if (closingPolicySection) {
+        if (closingPolicySection.__closeHandler) {
+          closingPolicySection.removeEventListener('transitionend', closingPolicySection.__closeHandler);
+          delete closingPolicySection.__closeHandler;
+        }
+        closingPolicySection.remove();
+        closingPolicySection = null;
+      }
+
       const policyContent = policyTemplate.content.firstElementChild?.cloneNode(true);
       if (!policyContent) return;
 
       policyContent.id = 'privacy-policy';
+      policyContent.dataset.state = 'opening';
+      policyContent.style.height = '0px';
+
+      const closeButton = policyContent.querySelector('[data-policy-close]');
+      closeButton?.addEventListener('click', () => closePolicy(true));
+
+      policyContent.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closePolicy(true);
+        }
+      });
 
       const formNote = policyTrigger.closest('.form-note');
       const form = policyTrigger.closest('form');
@@ -321,17 +383,25 @@
         return;
       }
 
-      activePolicySection?.remove();
       activePolicySection = policyContent;
       policyTrigger.setAttribute('aria-expanded', 'true');
       policyTrigger.setAttribute('aria-controls', 'privacy-policy');
 
-      policyContent.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          event.preventDefault();
-          closePolicy(true);
-        }
+      requestAnimationFrame(() => {
+        const targetHeight = policyContent.scrollHeight;
+        policyContent.style.height = `${targetHeight}px`;
+        policyContent.classList.add('is-visible');
       });
+
+      const handleOpenTransitionEnd = (event) => {
+        if (event.target !== policyContent || event.propertyName !== 'height') return;
+        policyContent.removeEventListener('transitionend', handleOpenTransitionEnd);
+        if (policyContent.dataset.state !== 'opening') return;
+        policyContent.style.height = 'auto';
+        policyContent.dataset.state = 'open';
+      };
+
+      policyContent.addEventListener('transitionend', handleOpenTransitionEnd);
 
       policyContent.focus({ preventScroll: true });
       policyContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
