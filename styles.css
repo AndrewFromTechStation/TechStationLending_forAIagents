@@ -541,7 +541,7 @@ textarea {
   resize: none;
 }
 
-.form button {
+.form button:not(.policy-close) {
   grid-column: 1 / -1;
   width: min(220px, 100%);
   justify-self: center;
@@ -598,22 +598,57 @@ textarea {
 }
 
 .policy-close {
+  --policy-close-size: clamp(30px, 3.5vw, 36px);
   position: absolute;
   top: clamp(10px, 2.5vw, 16px);
   right: clamp(10px, 2.5vw, 16px);
-  width: 32px;
-  height: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  inline-size: var(--policy-close-size);
+  block-size: var(--policy-close-size);
+  width: var(--policy-close-size);
+  height: var(--policy-close-size);
+  min-inline-size: 30px;
+  min-block-size: 30px;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  flex: none;
+  padding: 0;
   border: none;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
   color: rgba(255, 255, 255, 0.6);
-  font-size: 20px;
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.policy-close span {
+  position: relative;
+  display: block;
+  inline-size: 14px;
+  block-size: 14px;
+  font-size: 0;
+}
+
+.policy-close span::before,
+.policy-close span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  inline-size: 100%;
+  block-size: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transform-origin: center;
+}
+
+.policy-close span::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.policy-close span::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .policy-close:hover {
