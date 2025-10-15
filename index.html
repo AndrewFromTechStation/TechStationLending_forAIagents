@@ -22,7 +22,7 @@
         Создаем цифровых сотрудников, которые берут на себя рутину: сбор данных, коммуникацию, отчеты и продажи. Ты концентрируешься на росте, ИИ делает остальное.
       </p>
       <div class="hero-actions">
-        <a class="btn primary" href="#lead">Получить аудит процессов</a>
+        <button type="button" class="btn primary" data-scroll-to="lead">Получить аудит процессов</button>
         <a class="btn ghost" href="#cases">Смотреть кейсы</a>
       </div>
       <div class="metrics">
@@ -143,7 +143,7 @@
       <div class="cta-card">
         <h3>Готовы узнать, что можно автоматизировать прямо сейчас?</h3>
         <p>Оставьте заявку уже сейчас — проведем бесплатный экспресс‑аудит и покажем экономию на цифрах.</p>
-        <a class="btn primary" href="#contact">Забронировать онлайн сессию с экспертом</a>
+        <button type="button" class="btn primary" data-scroll-to="contact">Забронировать онлайн сессию с экспертом</button>
       </div>
     </section>
 
@@ -277,24 +277,42 @@
 
   <footer class="footer">
     <div class="footer-content">
-      <div>
+      <div class="footer-column footer-brand">
         <div class="logo">AI AGENTS TECHNOSTATION</div>
         <p>Автоматизируем бизнес, освобождаем команды для роста.</p>
       </div>
-      <div class="footer-links">
+      <div class="footer-column footer-links">
         <a href="#pain">Проблемы</a>
         <a href="#solution">Решение</a>
         <a href="#cases">Кейсы</a>
         <a href="#lead">Процесс</a>
         <a href="#contact">Контакты</a>
       </div>
-      <div class="footer-meta">
+      <div class="footer-column footer-meta">
         <span>© 2025 Technostation: AI-RPA</span>
         <a href="mailto:info@ai-rpa.ru">info@ai-rpa.ru</a>
       </div>
     </div>
   </footer>
   <script>
+    const scrollTriggers = document.querySelectorAll('[data-scroll-to]');
+
+    const smoothScrollToTarget = (event) => {
+      const trigger = event.currentTarget;
+      const targetId = trigger?.getAttribute('data-scroll-to');
+      if (!targetId) return;
+
+      const targetElement = document.getElementById(targetId);
+      if (!targetElement) return;
+
+      event.preventDefault();
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    scrollTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', smoothScrollToTarget);
+    });
+
     const policyTrigger = document.querySelector('[data-policy-toggle]');
     const policyTemplate = document.getElementById('privacy-policy-template');
     let activePolicySection = null;
