@@ -170,7 +170,107 @@
           <textarea id="process" name="process" rows="4" placeholder="Например: обработка лидов, подготовка отчетов, HR‑онбординг"></textarea>
         </div>
         <button class="btn primary" type="submit">Получить стратегию</button>
-        <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+        <p class="form-note">
+          Нажимая кнопку, вы соглашаетесь с
+          <a
+            href="#"
+            class="policy-trigger"
+            data-policy-toggle
+            aria-expanded="false"
+            >политикой обработки персональных данных.</a
+          >
+        </p>
+        <template id="privacy-policy-template">
+          <section
+            class="policy-content"
+            tabindex="-1"
+            aria-label="Политика обработки персональных данных"
+          >
+            <button
+              type="button"
+              class="policy-close"
+              data-policy-close
+              aria-label="Закрыть политику обработки персональных данных"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+            <h3>Политика конфиденциальности ООО «Техностанция»</h3>
+            <h4>1. Общие положения</h4>
+            <p>
+              1.1. Настоящая Политика определяет порядок обработки и защиты персональных
+              данных физических лиц, работающих с ООО «Техностанция» (далее — Компания).
+            </p>
+            <p>
+              1.2. Цель: защита персональных данных пользователей от неправомерного
+              доступа, раскрытия и использования.
+            </p>
+            <p>
+              1.3. Настоящая Политика разработана в соответствии с требованиями
+              законодательства Российской Федерации, в том числе Федерального закона
+              №152-ФЗ «О персональных данных».
+            </p>
+            <p>
+              1.4. Актуальная версия Политики доступна на сайте Компании по адресу:
+              ai-rpa.ru/politika-konfidenczialnosti.html.
+            </p>
+            <h4>2. Сбор и обработка персональных данных</h4>
+            <p>
+              2.1. Компания собирает и хранит только те данные, которые необходимы для
+              предоставления услуг и взаимодействия с пользователями.
+            </p>
+            <p>2.2. Цели обработки данных:</p>
+            <ul>
+              <li>предоставление консультационных и информационных услуг;</li>
+              <li>уведомления о новых услугах и предложениях;</li>
+              <li>ответы на запросы пользователей;</li>
+              <li>улучшение качества услуг и разработка новых предложений.</li>
+            </ul>
+            <p>
+              2.3. Обработка данных основывается на принципах законности, соответствия
+              объема целей обработки, а также добросовестности.
+            </p>
+            <h4>3. Хранение и использование персональных данных</h4>
+            <p>
+              3.1. Персональные данные хранятся на электронных носителях и обрабатываются
+              с использованием автоматизированных систем.
+            </p>
+            <p>
+              3.2. Передача персональных данных третьим лицам возможна только по законным
+              основаниям, включая запросы госорганов и судебные решения.
+            </p>
+            <h4>4. Защита персональных данных</h4>
+            <p>
+              4.1. Компания принимает все необходимые меры для защиты данных от
+              неправомерного доступа, изменения, раскрытия или уничтожения.
+            </p>
+            <p>
+              4.2. Доступ к данным сотрудников Компании ограничен, и они обязаны соблюдать
+              политику конфиденциальности.
+            </p>
+            <h4>5. Права субъекта персональных данных</h4>
+            <p>
+              5.1. Пользователь имеет право на получение информации о своих данных, их
+              корректировку или удаление в случае неполноты, устаревания или нарушения
+              законности обработки.
+            </p>
+            <p>
+              5.2. Запросы по обработке данных можно направлять на электронный адрес
+              Компании.
+            </p>
+            <h4>6. Изменение Политики конфиденциальности</h4>
+            <p>
+              6.1. Компания может вносить изменения в Политику конфиденциальности. Новая
+              версия вступает в силу с момента ее размещения на сайте, если иное не
+              предусмотрено законодательством.
+            </p>
+            <p>
+              <a href="article_9.pdf" target="_blank" rel="noopener noreferrer"
+                >Статья 9. Согласие на обработку персональных данных</a
+              >
+            </p>
+            <p>Дата публикации: 11.10.2024</p>
+          </section>
+        </template>
       </form>
     </section>
   </main>
@@ -194,5 +294,131 @@
       </div>
     </div>
   </footer>
+  <script>
+    const policyTrigger = document.querySelector('[data-policy-toggle]');
+    const policyTemplate = document.getElementById('privacy-policy-template');
+    let activePolicySection = null;
+    let closingPolicySection = null;
+
+    const closePolicy = (shouldFocusTrigger = false) => {
+      if (!policyTrigger || !activePolicySection) return;
+
+      const section = activePolicySection;
+      if (section.dataset.state === 'closing') return;
+
+      policyTrigger.setAttribute('aria-expanded', 'false');
+      policyTrigger.removeAttribute('aria-controls');
+
+      activePolicySection = null;
+      section.dataset.state = 'closing';
+      section.style.height = `${section.scrollHeight}px`;
+
+      // Force reflow before starting the collapse animation
+      void section.offsetHeight;
+
+      requestAnimationFrame(() => {
+        section.classList.remove('is-visible');
+        section.style.height = '0px';
+      });
+
+      const handleTransitionEnd = (event) => {
+        if (event.target !== section || event.propertyName !== 'height') return;
+        section.removeEventListener('transitionend', handleTransitionEnd);
+        delete section.__closeHandler;
+        section.remove();
+        closingPolicySection = null;
+
+        if (shouldFocusTrigger) {
+          policyTrigger.focus();
+        }
+      };
+
+      section.__closeHandler = handleTransitionEnd;
+      closingPolicySection = section;
+      section.addEventListener('transitionend', handleTransitionEnd);
+    };
+
+    const openPolicy = () => {
+      if (!policyTemplate || !policyTrigger) return;
+
+      if (activePolicySection) {
+        if (activePolicySection.dataset.state !== 'closing') {
+          return;
+        }
+      }
+
+      if (closingPolicySection) {
+        if (closingPolicySection.__closeHandler) {
+          closingPolicySection.removeEventListener('transitionend', closingPolicySection.__closeHandler);
+          delete closingPolicySection.__closeHandler;
+        }
+        closingPolicySection.remove();
+        closingPolicySection = null;
+      }
+
+      const policyContent = policyTemplate.content.firstElementChild?.cloneNode(true);
+      if (!policyContent) return;
+
+      policyContent.id = 'privacy-policy';
+      policyContent.dataset.state = 'opening';
+      policyContent.style.height = '0px';
+
+      const closeButton = policyContent.querySelector('[data-policy-close]');
+      closeButton?.addEventListener('click', () => closePolicy(true));
+
+      policyContent.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closePolicy(true);
+        }
+      });
+
+      const formNote = policyTrigger.closest('.form-note');
+      const form = policyTrigger.closest('form');
+      if (formNote) {
+        formNote.insertAdjacentElement('afterend', policyContent);
+      } else if (form) {
+        form.append(policyContent);
+      } else {
+        return;
+      }
+
+      activePolicySection = policyContent;
+      policyTrigger.setAttribute('aria-expanded', 'true');
+      policyTrigger.setAttribute('aria-controls', 'privacy-policy');
+
+      requestAnimationFrame(() => {
+        const targetHeight = policyContent.scrollHeight;
+        policyContent.style.height = `${targetHeight}px`;
+        policyContent.classList.add('is-visible');
+      });
+
+      const handleOpenTransitionEnd = (event) => {
+        if (event.target !== policyContent || event.propertyName !== 'height') return;
+        policyContent.removeEventListener('transitionend', handleOpenTransitionEnd);
+        if (policyContent.dataset.state !== 'opening') return;
+        policyContent.style.height = 'auto';
+        policyContent.dataset.state = 'open';
+      };
+
+      policyContent.addEventListener('transitionend', handleOpenTransitionEnd);
+
+      policyContent.focus({ preventScroll: true });
+      policyContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    policyTrigger?.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (!policyTemplate) return;
+
+      const isExpanded = policyTrigger.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        closePolicy(true);
+      } else {
+        openPolicy();
+      }
+    });
+  </script>
 </body>
 </html>
