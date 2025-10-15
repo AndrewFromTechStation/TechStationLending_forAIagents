@@ -688,8 +688,10 @@ textarea {
   position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 36px 64px;
+  gap: clamp(32px, 4vw, 64px);
   align-items: flex-start;
+  justify-items: start;
+  align-content: start;
   max-width: 1080px;
   margin: 0 auto;
   z-index: 1;
@@ -699,10 +701,52 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  align-items: flex-start;
+  align-self: stretch;
 }
 
 .footer-brand .logo {
   font-size: clamp(18px, 3vw, 22px);
+}
+
+.footer-brand {
+  max-width: 360px;
+}
+
+.footer-nav,
+.footer-contact {
+  width: 100%;
+}
+
+@media (min-width: 960px) {
+  .footer-content {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(40px, 5vw, 96px);
+  }
+
+  .footer-brand {
+    grid-column: span 5;
+  }
+
+  .footer-nav {
+    grid-column: span 3;
+  }
+
+  .footer-contact {
+    grid-column: span 4;
+  }
+
+  .footer-column {
+    padding-top: 12px;
+  }
+
+  .footer-brand {
+    padding-top: 0;
+  }
+
+  .footer-title {
+    margin-top: 0;
+  }
 }
 
 .footer-description {
