@@ -78,7 +78,7 @@ a {
 
 .hero {
   position: relative;
-  padding: 64px clamp(24px, 8vw, 120px) 120px;
+  padding: 32px clamp(24px, 8vw, 120px) 120px;
   overflow: hidden;
 }
 
