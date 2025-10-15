@@ -601,21 +601,51 @@ textarea {
   position: absolute;
   top: clamp(10px, 2.5vw, 16px);
   right: clamp(10px, 2.5vw, 16px);
-  width: 32px;
-  height: 32px;
+  inline-size: clamp(30px, 3.5vw, 36px);
+  block-size: clamp(30px, 3.5vw, 36px);
+  min-inline-size: 30px;
+  min-block-size: 30px;
   display: inline-flex;
+  flex: none;
   align-items: center;
   justify-content: center;
   padding: 0;
-  aspect-ratio: 1 / 1;
   border: none;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
   color: rgba(255, 255, 255, 0.6);
-  font-size: 20px;
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.policy-close span {
+  position: relative;
+  display: block;
+  inline-size: 14px;
+  block-size: 14px;
+  font-size: 0;
+}
+
+.policy-close span::before,
+.policy-close span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  inline-size: 100%;
+  block-size: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transform-origin: center;
+}
+
+.policy-close span::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.policy-close span::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .policy-close:hover {
