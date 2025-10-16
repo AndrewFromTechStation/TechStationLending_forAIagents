@@ -80,6 +80,9 @@ a {
   position: relative;
   padding: 32px clamp(24px, 8vw, 120px) 120px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero::before {
@@ -137,6 +140,7 @@ a {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 80px;
+  width: 100%;
 }
 
 .logo {
@@ -165,6 +169,8 @@ a {
   max-width: 780px;
   display: grid;
   gap: 16px;
+  justify-items: center;
+  text-align: center;
 }
 
 .tag {
@@ -216,6 +222,8 @@ a {
   font-size: clamp(18px, 2.4vw, 20px);
   color: var(--muted);
   max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-actions {
@@ -223,6 +231,7 @@ a {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hero-actions .btn {
@@ -282,12 +291,16 @@ a {
 
 .metrics {
   margin-top: 48px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(24px, 6vw, 56px);
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .metrics div {
+  min-width: 180px;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.9s ease forwards;
