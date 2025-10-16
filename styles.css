@@ -392,6 +392,28 @@ main {
 
 .friction-lab__markers li::before {
   content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: rgba(0, 227, 170, 0.45);
+  box-shadow: 0 0 0 6px rgba(0, 227, 170, 0.14);
+  vertical-align: middle;
+}
+
+.cases-panorama__radar {
+  position: absolute;
+  width: clamp(200px, 25vw, 300px);
+  aspect-ratio: 1 / 1;
+  top: 50%;
+  left: 46%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.cases-panorama__radar span {
   position: absolute;
   inset: auto auto -24px 12px;
   width: 1px;
@@ -1142,5 +1164,124 @@ textarea:focus-visible {
 
   .steps-spectrum__step::after {
     left: 26px;
+  }
+}
+@keyframes orbitSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  45% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  45% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes nodeGlow {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 0 rgba(0, 227, 170, 0));
+  }
+  50% {
+    transform: translateY(-6px) scale(1.04);
+    filter: drop-shadow(0 0 16px rgba(0, 227, 170, 0.35));
+  }
+}
+
+@keyframes connectorPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes flowTravel {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(calc(100% + 40px));
+  }
+}
+
+@keyframes storyPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes radarSweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes auroraSweep {
+  0% {
+    transform: translate3d(-10%, 0, 0) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(0%, 0, 0) rotate(1deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(10%, 0, 0) rotate(-1deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes flowPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes beamScan {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
   }
 }
