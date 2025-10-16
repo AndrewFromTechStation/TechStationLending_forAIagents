@@ -29,8 +29,14 @@ body {
     radial-gradient(circle at 50% 85%, rgba(255, 122, 217, 0.18), transparent 55%),
     var(--bg);
   color: var(--text);
+  background: radial-gradient(circle at 18% 12%, rgba(109, 91, 255, 0.2), transparent 55%),
+    radial-gradient(circle at 82% 9%, rgba(33, 245, 193, 0.14), transparent 45%),
+    radial-gradient(circle at 50% 82%, rgba(255, 122, 217, 0.18), transparent 58%),
+    var(--bg);
   line-height: 1.6;
   overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
 }
 
 h1,
@@ -40,6 +46,12 @@ h4 {
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--text);
+  line-height: 1.15;
+}
+
+p,
+li {
+  color: var(--muted);
 }
 
 p,
@@ -400,6 +412,17 @@ a:focus-visible {
 
 .section::before {
   content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: rgba(0, 227, 170, 0.45);
+  box-shadow: 0 0 0 6px rgba(0, 227, 170, 0.14);
+  vertical-align: middle;
+}
+
+.cases-panorama__radar {
   position: absolute;
   inset: 0;
   opacity: 0.18;
@@ -783,6 +806,9 @@ a:focus-visible {
 
 .cases__ticker {
   position: relative;
+  display: grid;
+  gap: clamp(28px, 6vw, 64px);
+  padding: clamp(24px, 4vw, 48px) clamp(16px, 3vw, 36px);
   overflow: hidden;
   border-radius: 32px;
   padding: 12px 0;
@@ -1152,6 +1178,7 @@ a:focus-visible {
   .solution__orbit {
     grid-template-columns: 1fr;
   }
+}
 
   .form__row {
     grid-template-columns: 1fr;
