@@ -1,2 +1,2 @@
 # TechStationLending_forAIagents
-1
+Скоро здесь будет крутая дока на крутой лендинг.
