@@ -43,111 +43,192 @@
   </header>
 
   <main>
-    <section class="section" id="pain">
+    <section class="section section--nebula" id="pain">
       <div class="section-header">
         <span class="tag">Знакомо?</span>
         <h2>Люди выгорают от рутины, процессы буксуют</h2>
         <p>Ручное обновление CRM, бесконечные таблицы, просроченные лиды, потерянные письма. В это время конкуренты уже делегируют всё ИИ.</p>
       </div>
-      <div class="grid pain-points">
-        <article>
-          <h3>Нет времени на стратегию</h3>
-          <p>Сотрудники тратят 60% дня на повторяющиеся процессы вместо того, чтобы развивать продукты и продажи.</p>
-        </article>
-        <article>
-          <h3>Ошибки и человеческий фактор</h3>
-          <p>Неправильные цифры в отчетах, пропущенные заявки и забытые письма, которые стоят денег.</p>
-        </article>
-        <article>
-          <h3>Сложность масштабирования</h3>
-          <p>Для новых направлений нужно нанимать, обучать и удерживать людей — а агенты масштабируются за минуты.</p>
-        </article>
+      <div class="pain-experience">
+        <div class="pain-experience__context">
+          <p>Типичный день команды до автоматизации выглядит как непрерывная полоса препятствий: задачи копятся быстрее, чем их успевают закрывать.</p>
+          <div class="pain-experience__meter" aria-hidden="true">
+            <span>Ручных операций</span>
+            <strong>60%</strong>
+            <span>рабочего времени</span>
+          </div>
+        </div>
+        <ol class="pain-experience__timeline">
+          <li>
+            <span class="pain-experience__moment">09:00</span>
+            <div class="pain-experience__detail">
+              <h3>Нет времени на стратегию</h3>
+              <p>Сотрудники тратят 60% дня на повторяющиеся процессы вместо того, чтобы развивать продукты и продажи.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pain-experience__moment">12:30</span>
+            <div class="pain-experience__detail">
+              <h3>Ошибки и человеческий фактор</h3>
+              <p>Неправильные цифры в отчетах, пропущенные заявки и забытые письма, которые стоят денег.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pain-experience__moment">18:15</span>
+            <div class="pain-experience__detail">
+              <h3>Сложность масштабирования</h3>
+              <p>Для новых направлений нужно нанимать, обучать и удерживать людей — а агенты масштабируются за минуты.</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <section class="section highlighted" id="solution">
+    <section class="section section--aura highlighted" id="solution">
       <div class="section-header">
         <span class="tag">Решение</span>
         <h2>ИИ‑агенты, которые работают за команду</h2>
         <p>Мы проектируем экосистему, где каждый процесс закрывается автономным агентом: от первичного контакта с клиентом до аналитики и выставления счетов.</p>
       </div>
-      <div class="grid features">
-        <article>
-          <h3>Онбординг за 10 дней</h3>
-          <p>Выявляем задачи, строим архитектуру, подключаем ваши системы и запускаем MVP без остановки бизнеса.</p>
-        </article>
-        <article>
-          <h3>Гибкая интеграция</h3>
-          <p>CRM, ERP, Notion, Google Sheets, почта и мессенджеры и многое другое — агенты подключаются к любым API и документам.</p>
-        </article>
-        <article>
-          <h3>Прозрачная аналитика</h3>
-          <p>Журнал действий, тесты и отчеты о проделанной работе. Видно, что делает каждый агент и какой эффект он приносит.</p>
-        </article>
-        <article>
-          <h3>Поддержка и развитие</h3>
-          <p>Ведем агента за руку: обновления, оптимизация подсказок, подключение новых сценариев и обучение команды.</p>
-        </article>
+      <div class="solution-ecosystem">
+        <figure class="solution-ecosystem__diagram">
+          <figcaption class="solution-ecosystem__core">
+            <h3>Цифровая команда без ожидания найма</h3>
+            <p>
+              Каждый агент закрывает свой участок процесса, взаимодействуя с системами, клиентами и аналитикой в едином контуре.
+            </p>
+          </figcaption>
+          <dl class="solution-ecosystem__nodes">
+            <div class="solution-ecosystem__node solution-ecosystem__node--sales">
+              <dt>Продажи</dt>
+              <dd>Обработка лидов и коммуникации 24/7</dd>
+            </div>
+            <div class="solution-ecosystem__node solution-ecosystem__node--ops">
+              <dt>Операции</dt>
+              <dd>Автоматизированные регламенты и отчетность</dd>
+            </div>
+            <div class="solution-ecosystem__node solution-ecosystem__node--support">
+              <dt>Поддержка</dt>
+              <dd>База знаний, ответы и эскалации без задержек</dd>
+            </div>
+          </dl>
+        </figure>
+        <div class="solution-ecosystem__stream">
+          <h3>Оркестровка внедрения</h3>
+          <ol class="solution-ecosystem__phases">
+            <li>
+              <span class="solution-ecosystem__phase-title">Онбординг за 10 дней</span>
+              <p>Выявляем задачи, строим архитектуру, подключаем ваши системы и запускаем MVP без остановки бизнеса.</p>
+            </li>
+            <li>
+              <span class="solution-ecosystem__phase-title">Гибкая интеграция</span>
+              <p>CRM, ERP, Notion, Google Sheets, почта и мессенджеры и многое другое — агенты подключаются к любым API и документам.</p>
+            </li>
+            <li>
+              <span class="solution-ecosystem__phase-title">Прозрачная аналитика</span>
+              <p>Журнал действий, тесты и отчеты о проделанной работе. Видно, что делает каждый агент и какой эффект он приносит.</p>
+            </li>
+            <li>
+              <span class="solution-ecosystem__phase-title">Поддержка и развитие</span>
+              <p>Ведем агента за руку: обновления, оптимизация подсказок, подключение новых сценариев и обучение команды.</p>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="cases">
+    <section class="section section--constellation" id="cases">
       <div class="section-header">
         <span class="tag">Кейсы</span>
         <h2>Как мы усиливаем команды</h2>
       </div>
-      <div class="cases">
-        <article>
-          <div class="case-header">
-            <span class="case-label">SaaS, 45 сотрудников</span>
-            <span class="case-result">–38% затрат на саппорт</span>
-          </div>
-          <p>ИИ‑агент обрабатывает 1 200 обращений ежемесячно, подбирает ответы, создает задачи разработчикам и закрывает тикеты.</p>
+      <div class="cases-panorama">
+        <article class="cases-panorama__story">
+          <header class="cases-panorama__story-head">
+            <span class="cases-panorama__sector">SaaS, 45 сотрудников</span>
+            <strong class="cases-panorama__result">–38% затрат на саппорт</strong>
+          </header>
+          <p>
+            ИИ‑агент обрабатывает 1 200 обращений ежемесячно, подбирает ответы, создает задачи разработчикам и закрывает тикеты.
+          </p>
+          <footer class="cases-panorama__story-foot">
+            <span>Результат: поддержка стала работать круглосуточно без расширения штата.</span>
+          </footer>
         </article>
-        <article>
-          <div class="case-header">
-            <span class="case-label">Агентство недвижимости</span>
-            <span class="case-result">+220 лидов в месяц</span>
+        <div class="cases-panorama__radar" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="cases-panorama__ticker-window">
+          <div class="cases-panorama__ticker" role="list">
+            <article class="cases-panorama__ticker-item" role="listitem">
+              <h3>Агентство недвижимости</h3>
+              <p class="cases-panorama__metric">+220 лидов в месяц</p>
+              <p>Автоворонка с чат‑ботом: звонки, письма, подбор объектов и запись на показы без участия менеджера.</p>
+            </article>
+            <article class="cases-panorama__ticker-item" role="listitem">
+              <h3>Производство</h3>
+              <p class="cases-panorama__metric">3 минуты на отчет вместо 2 часов</p>
+              <p>Агенты собирают данные с датчиков, формируют отчеты и уведомляют ответственных о критичных событиях.</p>
+            </article>
+            <article class="cases-panorama__ticker-item" aria-hidden="true">
+              <h3>Агентство недвижимости</h3>
+              <p class="cases-panorama__metric">+220 лидов в месяц</p>
+              <p>Автоворонка с чат‑ботом: звонки, письма, подбор объектов и запись на показы без участия менеджера.</p>
+            </article>
+            <article class="cases-panorama__ticker-item" aria-hidden="true">
+              <h3>Производство</h3>
+              <p class="cases-panorama__metric">3 минуты на отчет вместо 2 часов</p>
+              <p>Агенты собирают данные с датчиков, формируют отчеты и уведомляют ответственных о критичных событиях.</p>
+            </article>
           </div>
-          <p>Автоворонка с чат‑ботом: звонки, письма, подбор объектов и запись на показы без участия менеджера.</p>
-        </article>
-        <article>
-          <div class="case-header">
-            <span class="case-label">Производство</span>
-            <span class="case-result">3 минуты на отчет вместо 2 часов</span>
-          </div>
-          <p>Агенты собирают данные с датчиков, формируют отчеты и уведомляют ответственных о критичных событиях.</p>
-        </article>
+        </div>
       </div>
     </section>
 
-    <section class="section steps" id="lead">
+    <section class="section section--steps steps" id="lead">
       <div class="section-header">
         <span class="tag">Как это работает</span>
         <h2>Запуск за 3 шага</h2>
       </div>
-      <ol class="steps-list">
-        <li>
-          <h3>1. Аудит процессов</h3>
-          <p>Фиксируем точки роста, где автоматизация даст мгновенный ROI. Погружаемся в ваш стек.</p>
-        </li>
-        <li>
-          <h3>2. Проектирование агентов</h3>
-          <p>Создаем сценарии, подключаем данные, обучаем на примерах компании, настраиваем защиту данных.</p>
-        </li>
-        <li>
-          <h3>3. Запуск и масштабирование</h3>
-          <p>Интегрируем в рабочие процессы, обучаем команду, добавляем новые функции и контролируем качество.</p>
-        </li>
-      </ol>
-      <div class="cta-card">
-        <h3>Готовы узнать, что можно автоматизировать прямо сейчас?</h3>
-        <p>Оставьте заявку уже сейчас — проведем бесплатный экспресс‑аудит и покажем экономию на цифрах.</p>
-        <h4>Забронируйте онлайн сессию с экспертом ниже</h4>
+      <div class="steps-rail">
+        <ol class="steps-rail__list">
+          <li class="steps-rail__node">
+            <div class="steps-rail__label">1</div>
+            <div class="steps-rail__content">
+              <h3>Аудит процессов</h3>
+              <p>Фиксируем точки роста, где автоматизация даст мгновенный ROI. Погружаемся в ваш стек.</p>
+            </div>
+          </li>
+          <li class="steps-rail__node">
+            <div class="steps-rail__label">2</div>
+            <div class="steps-rail__content">
+              <h3>Проектирование агентов</h3>
+              <p>Создаем сценарии, подключаем данные, обучаем на примерах компании, настраиваем защиту данных.</p>
+            </div>
+          </li>
+          <li class="steps-rail__node">
+            <div class="steps-rail__label">3</div>
+            <div class="steps-rail__content">
+              <h3>Запуск и масштабирование</h3>
+              <p>Интегрируем в рабочие процессы, обучаем команду, добавляем новые функции и контролируем качество.</p>
+            </div>
+          </li>
+        </ol>
+        <span class="steps-rail__flow" aria-hidden="true"></span>
+      </div>
+      <div class="cta-banner">
+        <div class="cta-banner__beam" aria-hidden="true"></div>
+        <div class="cta-banner__content">
+          <h3>Готовы узнать, что можно автоматизировать прямо сейчас?</h3>
+          <p>Оставьте заявку уже сейчас — проведем бесплатный экспресс‑аудит и покажем экономию на цифрах.</p>
+          <h4>Забронируйте онлайн сессию с экспертом ниже</h4>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section section--contact" id="contact">
       <div class="section-header">
         <span class="tag">Свяжись с нами</span>
         <h2>Забери персональную стратегию автоматизации</h2>
