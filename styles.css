@@ -124,7 +124,10 @@ a:focus-visible {
 
 .hero {
   position: relative;
-  padding: clamp(32px, 8vw, 72px) clamp(20px, 9vw, 120px) clamp(80px, 12vw, 140px);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: clamp(32px, 8vw, 72px) clamp(20px, 9vw, 120px) clamp(40px, 10vw, 90px);
   overflow: hidden;
 }
 
@@ -238,11 +241,13 @@ a:focus-visible {
 }
 
 .hero__inner {
-  margin-top: clamp(32px, 8vw, 96px);
+  margin-top: clamp(24px, 6vw, 72px);
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: clamp(32px, 6vw, 80px);
   align-items: center;
+  align-content: center;
 }
 
 .hero__copy h1 {
