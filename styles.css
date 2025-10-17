@@ -342,15 +342,14 @@ a:focus-visible {
 .hero__chip {
   position: relative;
   z-index: 1;
-  padding: 34px;
-  border-radius: 32px 32px 120px 120px;
-  background: rgba(5, 7, 30, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
   display: grid;
   gap: 12px;
   text-align: center;
-  transform: translateY(-10px);
+  padding: 0;
+  background: none;
+  border: none;
+  backdrop-filter: none;
+  transform: none;
 }
 
 .hero__chip-label {
