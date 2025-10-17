@@ -1089,8 +1089,7 @@ a:focus-visible {
   display: grid;
   gap: 16px;
   color: var(--muted);
-  max-height: 70vh;
-  overflow: auto;
+  overflow: hidden;
   outline: none;
   transform-origin: top;
   opacity: 0;
@@ -1099,6 +1098,10 @@ a:focus-visible {
 
 .policy.is-visible {
   opacity: 1;
+}
+
+.policy[data-state='open'] {
+  overflow: visible;
 }
 
 .policy__close {
